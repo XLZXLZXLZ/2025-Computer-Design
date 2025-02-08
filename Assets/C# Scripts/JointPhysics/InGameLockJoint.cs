@@ -11,17 +11,9 @@ public class InGameLockJoint : InGameJoint
         Gizmos.DrawWireSphere(transform.position, 0.5f);
     }
 
-    private void OnMouseDown()
+    public void Release()
     {
         onRelease?.Invoke(this);
-        Destroy(gameObject);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            onRelease?.Invoke(this);
-        }
-    }
 }
