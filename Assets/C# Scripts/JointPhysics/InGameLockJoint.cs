@@ -5,6 +5,11 @@ using UnityEngine;
 public class InGameLockJoint : InGameJoint
 {
     private Color showColor = Color.yellow;
+    AudioController audioController;
+    private void Start()
+    {
+        audioController = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>();
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = showColor;
@@ -14,6 +19,7 @@ public class InGameLockJoint : InGameJoint
     public void Release()
     {
         onRelease?.Invoke(this);
+        audioController.PlaySfx(audioController.wood_break);
     }
 
 }
