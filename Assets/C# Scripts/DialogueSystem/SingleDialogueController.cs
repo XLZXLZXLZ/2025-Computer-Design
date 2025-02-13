@@ -13,6 +13,8 @@ public class SingleDialogueController : MonoBehaviour
     [SerializeField] Text Words;
     [SerializeField] Text ActorName;
     [SerializeField] int currentLineIndex = 0;
+    [SerializeField] VerticalLayoutGroup chioceHolder;
+    [SerializeField] GameObject buttonPrefab;
 
     [Tooltip("打字机效果时间间隔")]
     [SerializeField] float typingSpeed;//打字机效果时间间隔
@@ -20,6 +22,7 @@ public class SingleDialogueController : MonoBehaviour
     [SerializeField] KeyCode skipCurrentLineKey = KeyCode.L;
 
     Coroutine TypingWords;
+    bool waitForButtonClick = false;
 
     private void OnEnable()
     {
@@ -38,15 +41,23 @@ public class SingleDialogueController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(nextLineKey) && TypingWords == null) {
-            if (currentLineIndex == Dialogue.Count - 1) {
-                EndDialogue();
-                return;
-            }
-            ShowNextLine(Dialogue[++currentLineIndex]);
-        } else if (Input.GetKeyDown(skipCurrentLineKey) && TypingWords != null) {
+        if (Input.GetKeyDown(nextLineKey) && TypingWords == null && !waitForButtonClick)
+        {
+            PushDialogue();
+        }
+        else if (Input.GetKeyDown(skipCurrentLineKey) && TypingWords != null) {
             EndType();
         }
+    }
+
+    private void PushDialogue()
+    {
+        if (currentLineIndex == Dialogue.Count - 1)
+        {
+            EndDialogue();
+            return;
+        }
+        ShowNextLine(Dialogue[++currentLineIndex]);
     }
 
     /// <summary>
@@ -57,6 +68,40 @@ public class SingleDialogueController : MonoBehaviour
         ActorIcon.sprite = DialogueConfig.Actors.GetIconWithName(nextLine.ActorName);
         ActorName.text = nextLine.ActorName;
         TypingWords = StartCoroutine(TypeWords(nextLine.Sentence));
+        if (nextLine.Chioces.Count > 0) {
+            waitForButtonClick = true;
+            StartCoroutine(GenerateChioceButtom(nextLine.Chioces));
+        }
+    }
+
+    IEnumerator GenerateChioceButtom(List<string> chioces) {
+        yield return new WaitForFixedUpdate();
+        while (TypingWords != null) {
+            //Debug.Log("Waiting for typing...");
+            yield return new WaitForEndOfFrame();
+            //Debug.Log("After yield retrun");
+        }
+        //Debug.Log("Ready to show button");
+
+        foreach (var chiocesText in chioces) {
+            var newButtom = Instantiate(buttonPrefab);
+            newButtom.GetComponentInChildren<Text>().text = chiocesText;
+            newButtom.GetComponent<Button>().onClick.AddListener(() => OnChoiceButtonClicked());
+            newButtom.transform.SetParent(chioceHolder.transform);
+        }
+        yield return null;
+    }
+
+    void OnChoiceButtonClicked() {
+        GameObject button;
+
+        for (int i = chioceHolder.transform.childCount-1;i >= 0; i--) {
+            button = chioceHolder.transform.GetChild(i).gameObject;
+            button.GetComponent<Button>().onClick.RemoveAllListeners();
+            Destroy(button);
+        }
+        waitForButtonClick = false;
+        PushDialogue();
     }
 
     IEnumerator TypeWords(string words) { 
@@ -89,7 +134,16 @@ public class SingleDialogueController : MonoBehaviour
                 {
                     i++;
                     line = lines[i];
-                    Dialogue.Add(new Lines { ActorName = ActorName, Sentence = line });
+                    var newLine = new Lines(ActorName, line);
+                    Dialogue.Add(newLine);
+                    if (i < lines.Count() - 1 && lines[i + 1].StartsWith("#")) {
+                        i++;
+                        for (;i < lines.Count() && lines[i].StartsWith("#"); i++)
+                        {
+                            Debug.Log("检测到按钮");
+                            newLine.Chioces.Add(lines[i].Substring(1));
+                        }
+                    }
                 } else {
                     Debug.LogError("读取到不存在的演员信息");
                     EndDialogue();
@@ -130,4 +184,17 @@ public static class DialogueSystemExtension {
 public struct Lines {
     public string ActorName;
     public string Sentence;
+    public List<string> Chioces;
+
+    public Lines(string actorName,string sentence) {
+        ActorName = actorName;
+        Sentence = sentence;
+        Chioces = new();
+    }
+
+    public Lines(string actorName,string sentence,List<string> chioces) {
+        ActorName = actorName;
+        Sentence = sentence;
+        Chioces = chioces;
+    }
 }
