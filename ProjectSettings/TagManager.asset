@@ -13,7 +13,7 @@ TagManager:
   - Water
   - UI
   - BackGround
-  - 
+  - Grid
   - 
   - 
   - 
@@ -53,4 +53,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 926496121
+    locked: 0
+  - name: Overlay
+    uniqueID: 4022942045
     locked: 0
