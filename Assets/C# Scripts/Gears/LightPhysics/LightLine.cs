@@ -148,6 +148,13 @@ public class LightLine : MonoBehaviour
         if (isOn == activate) return;
         isOn = activate;
         line.DOStartWidth(isOn ? lineWidth : 0, 0.3f);
+
+        foreach (var hit in currentHits)
+        {
+            hit.LightLeave(this);
+        }
+
+        currentHits.Clear();
     }
 
     // 设置光线起点和方向

@@ -12,4 +12,11 @@ public class LightSource : MonoBehaviour
         line.SetActivate(true);
         line.SetParameters(transform.position, transform.right);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(transform.position, transform.right * 100);
+        Gizmos.DrawWireSphere(transform.position, 0.5f);
+    }
 }

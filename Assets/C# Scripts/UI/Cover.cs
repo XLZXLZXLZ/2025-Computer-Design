@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -24,6 +25,11 @@ public class Cover : Singleton<Cover>
         canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
     }
 
+    public void ChangeScene(string sceneName)
+    {
+        CellCover(() => SceneManager.LoadScene(sceneName), Color.black);
+    }
+
     /// <summary>
     /// 单元格遮蔽式的转场
     /// </summary>
@@ -34,7 +40,7 @@ public class Cover : Singleton<Cover>
     /// <param name="cellAppearDuration">单个单元格出现和消失的时间，默认0.3秒</param>
     /// <param name="coveredDuration">单个单元格出现后等待多久后开始消失，默认1.5秒</param>
     /// <param name="biasBetweenCells">每组出现的单元格之间的时间差，默认0.1秒</param>
-    public void CellCover(float cellSize, Action MidPointAction, Color cellColor , bool leftToRight , float cellAppearDuration = 0.3f, float coveredDuration = 1.5f, float biasBetweenCells = 0.1f)
+    public void CellCover(Action MidPointAction, Color cellColor , float cellSize = 50f  , bool leftToRight = true , float cellAppearDuration = 0.3f, float coveredDuration = 1.5f, float biasBetweenCells = 0.1f)
     {
         // 计算屏幕尺寸
         Vector2 referenceResolution = GetComponent<CanvasScaler>().referenceResolution;
