@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,11 +16,14 @@ public class SingleDialogueController : MonoBehaviour
     [SerializeField] int currentLineIndex = 0;
     [SerializeField] VerticalLayoutGroup chioceHolder;
     [SerializeField] GameObject buttonPrefab;
+    [SerializeField] List<GameObject> promptObject = new();//给玩家的提示物体
+    //配置提示物体时用到的计数器
 
     [Tooltip("打字机效果时间间隔")]
     [SerializeField] float typingSpeed;//打字机效果时间间隔
     [SerializeField] KeyCode nextLineKey = KeyCode.K;
     [SerializeField] KeyCode skipCurrentLineKey = KeyCode.L;
+
 
     Coroutine TypingWords;
     bool waitForButtonClick = false;
@@ -72,6 +76,8 @@ public class SingleDialogueController : MonoBehaviour
             waitForButtonClick = true;
             StartCoroutine(GenerateChioceButtom(nextLine.Chioces));
         }
+
+        nextLine.StartPrompt();
     }
 
     IEnumerator GenerateChioceButtom(List<string> chioces) {
@@ -123,33 +129,88 @@ public class SingleDialogueController : MonoBehaviour
 
     void LoadDialogueConfig() {
         Dialogue.Clear();
+        int promptObjectIndex = 0;
 
-        string[] lines = DialogueConfig.Dialogue.text.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
-        for (int i=0;i < lines.Count(); i++)
-        {
-            string line = lines[i];
-            if (line.StartsWith("@")) { 
-                string ActorName = line.Substring(1);
-                if (DialogueConfig.Actors.IfActorExistInConfig(ActorName))
-                {
-                    i++;
-                    line = lines[i];
-                    var newLine = new Lines(ActorName, line);
-                    Dialogue.Add(newLine);
-                    if (i < lines.Count() - 1 && lines[i + 1].StartsWith("#")) {
+        string[] blocks = DialogueConfig.Dialogue.text.Split('~', System.StringSplitOptions.None);
+        foreach (var block in blocks) {
+            string lines = block;
+            string[] linesArray = lines.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
+            for (int i=0;i < linesArray.Count() ; i++) { 
+                string line = linesArray[i];
+
+                if (line.StartsWith("@")) { 
+                    //读取到演员信息
+                    string ActorName = line.Substring(1);
+                    if (DialogueConfig.Actors.IfActorExistInConfig(ActorName))
+                    {
                         i++;
-                        for (;i < lines.Count() && lines[i].StartsWith("#"); i++)
+                        line = linesArray[i];
+                        var newLine = new Lines(ActorName, line,null);
+                        if (i < linesArray.Count() - 1 && linesArray[i + 1].StartsWith("#"))
                         {
-                            Debug.Log("检测到按钮");
-                            newLine.Chioces.Add(lines[i].Substring(1));
+                            i++;
+                            for (; i < linesArray.Count() && linesArray[i].StartsWith("#"); i++)
+                            {
+                                newLine.Chioces.Add(linesArray[i].Substring(1));
+                            }
                         }
+                        else {
+                            i++;
+                        } 
+
+                        if (i <= linesArray.Count() - 1 && linesArray[i].StartsWith("*")) {
+                            line = linesArray[i].Substring(1);
+                            SingleDialoguePromptType promptType = SingleDialoguePromptType.Point;
+                            try {
+                                Enum.TryParse(line, out promptType);
+                            } catch (Exception e) {
+                                Debug.LogError("无法从文本转换到枚举,检查拼写");
+                                Debug.LogException(e);
+                            }
+
+                            if (promptObjectIndex >= promptObject.Count) {
+                                Debug.LogError("错误的玩家提示相关物体配置");
+                                promptObjectIndex = 0;
+                            }
+                            Debug.Log("注册提示事件");
+                            newLine = new Lines(newLine, () => SingleDialoguePrompt.Interact(this, promptObject[promptObjectIndex++], promptType));
+                        }
+
+                        Dialogue.Add(newLine);
+                    } else {
+                        Debug.LogError("读取到不存在的演员信息");
+                        EndDialogue();  
                     }
-                } else {
-                    Debug.LogError("读取到不存在的演员信息");
-                    EndDialogue();
                 }
             }
         }
+
+        //string[] lines = DialogueConfig.Dialogue.text.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
+        //for (int i=0;i < lines.Count(); i++)
+        //{
+        //    string line = lines[i];
+        //    if (line.StartsWith("@")) { 
+        //        string ActorName = line.Substring(1);
+        //        if (DialogueConfig.Actors.IfActorExistInConfig(ActorName))
+        //        {
+        //            i++;
+        //            line = lines[i];
+        //            var newLine = new Lines(ActorName, line,null);
+        //            Dialogue.Add(newLine);
+        //            if (i < lines.Count() - 1 && lines[i + 1].StartsWith("#")) {
+        //                i++;
+        //                for (;i < lines.Count() && lines[i].StartsWith("#"); i++)
+        //                {
+        //                    Debug.Log("检测到按钮");
+        //                    newLine.Chioces.Add(lines[i].Substring(1));
+        //                }
+        //            }
+        //        } else {
+        //            Debug.LogError("读取到不存在的演员信息");
+        //            EndDialogue();
+        //        }
+        //    }
+        //}
     }
 
     void EndDialogue() {
@@ -185,16 +246,30 @@ public struct Lines {
     public string ActorName;
     public string Sentence;
     public List<string> Chioces;
+    public event Action Prompt;
 
-    public Lines(string actorName,string sentence) {
+    public void StartPrompt() {
+        Prompt?.Invoke();
+    } 
+
+    public Lines(string actorName,string sentence,Action action) {
         ActorName = actorName;
         Sentence = sentence;
         Chioces = new();
+        Prompt = action;
     }
 
-    public Lines(string actorName,string sentence,List<string> chioces) {
+    public Lines(string actorName,string sentence,List<string> chioces,Action action) {
         ActorName = actorName;
         Sentence = sentence;
         Chioces = chioces;
+        Prompt = action;
+    }
+
+    public Lines(Lines l,Action action) { 
+        ActorName = l.ActorName;
+        Sentence = l.Sentence;
+        Chioces = l.Chioces;
+        Prompt = action;
     }
 }
