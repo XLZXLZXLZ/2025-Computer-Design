@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,6 +25,10 @@ public class SingleDialogueController : MonoBehaviour
     [SerializeField] KeyCode nextLineKey = KeyCode.K;
     [SerializeField] KeyCode skipCurrentLineKey = KeyCode.L;
 
+    [SerializeField] float fadeInLength = 100f; //做移入动画时的移动距离
+    [SerializeField] GameObject panel;
+
+    private Vector3 startPos;
 
     Coroutine TypingWords;
     bool waitForButtonClick = false;
@@ -32,14 +37,15 @@ public class SingleDialogueController : MonoBehaviour
     {
         LoadDialogueConfig();
         currentLineIndex = 0;
-
-        ShowNextLine(Dialogue[currentLineIndex]);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        startPos = panel.transform.position;
+        panel.transform.position = startPos + Vector3.down * fadeInLength;
+
+        Activate();
     }
 
     // Update is called once per frame
@@ -113,7 +119,7 @@ public class SingleDialogueController : MonoBehaviour
     IEnumerator TypeWords(string words) { 
         yield return new WaitForEndOfFrame();
 
-        for (int i=0;i < words.Count(); i++) { 
+        for (int i=0;i < words.Count() + 1; i++) { 
             Words.text = words[..i];
             yield return new WaitForSeconds(typingSpeed);   
         }
@@ -219,7 +225,22 @@ public class SingleDialogueController : MonoBehaviour
 
         //关闭对话框
 
-        gameObject.SetActive(false);
+        panel.transform.DOMove(startPos + Vector3.down * fadeInLength, 0.5f)
+            .SetEase(Ease.InBack)
+            .OnComplete(() => gameObject.SetActive(false));
+    }
+
+    void StartDialogue()
+    {
+        panel.transform.DOMove(startPos, 0.5f)
+            .SetEase(Ease.OutBack)
+            .OnComplete(() => ShowNextLine(Dialogue[currentLineIndex]));
+    }
+
+    //外部激活API
+    public void Activate()
+    {
+        StartDialogue();
     }
 }
 

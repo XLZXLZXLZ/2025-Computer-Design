@@ -19,7 +19,11 @@ public abstract class LightPhysics : MonoBehaviour
     public void LightHit(LightLine incomingLight)
     {
         lightLines.Add(incomingLight);
-        OnHit();
+
+        if (lightLines.Count == 1)
+        {
+            OnHit();
+        }
     }
 
     protected abstract void OnHit();

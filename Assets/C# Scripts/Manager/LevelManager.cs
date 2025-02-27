@@ -7,7 +7,7 @@ public class LevelManager : Singleton<LevelManager>
 {
     public void FinishLevel()
     {
-
+        RestartLevel(); //¡Ÿ ±
     }
 
     public void RestartLevel()
