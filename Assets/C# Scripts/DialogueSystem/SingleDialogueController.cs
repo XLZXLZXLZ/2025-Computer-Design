@@ -30,6 +30,8 @@ public class SingleDialogueController : MonoBehaviour
 
     private Vector3 startPos;
 
+    private bool Interact => Input.GetKeyDown(nextLineKey) || Input.GetMouseButtonDown(0);
+
     Coroutine TypingWords;
     bool waitForButtonClick = false;
 
@@ -44,18 +46,16 @@ public class SingleDialogueController : MonoBehaviour
     {
         startPos = panel.transform.position;
         panel.transform.position = startPos + Vector3.down * fadeInLength;
-
-        Activate();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(nextLineKey) && TypingWords == null && !waitForButtonClick)
+        if (Interact && TypingWords == null && !waitForButtonClick)
         {
             PushDialogue();
         }
-        else if (Input.GetKeyDown(skipCurrentLineKey) && TypingWords != null) {
+        else if (Interact && TypingWords != null) {
             EndType();
         }
     }
@@ -161,7 +161,7 @@ public class SingleDialogueController : MonoBehaviour
                             }
                         }
                         else {
-                            i++;
+                            //i++;
                         } 
 
                         if (i <= linesArray.Count() - 1 && linesArray[i].StartsWith("*")) {

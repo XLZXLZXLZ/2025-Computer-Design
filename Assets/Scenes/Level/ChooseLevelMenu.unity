@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: "\u7AE0\u8D30\xB7\u5149"
-  description: "\u65E0\u5F62\u7834\u6653\u88C2\u7384\u9752\uFF0C\u4E07\u7F15\u7A7F\u6797\u7EC7\u6773\u51A5\u3002\r\n\u4E09\u68F1\u5256\u5F00\u6DF7\u6C8C\u8272\uFF0C\u59CB\u77E5\u76D8\u53E4\u773C\u4E2D\u661F\u3002"
+  description: "\u68F1\u5206\u4E03\u8272\u6E05\uFF0C\u955C\u8F6C\u4E00\u75D5\u660E\u3002\r\n\u4E07\u8C61\u7409\u7483\u5F71\uFF0C\u8FD8\u4ECE\u65E5\u6708\u7CBE\u3002"
   fadeDuration: 0.3
 --- !u!1 &244336331
 GameObject:
@@ -1254,7 +1254,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 160}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &554999744
 MonoBehaviour:
@@ -2644,7 +2644,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 160}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1198356912
 MonoBehaviour:
@@ -3331,7 +3331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: "2. \u53CD\u5C04"
-  description: "\u66F2\u88C1\u7384\u7D20\u5851\u7A7A\u5E7D\uFF0C\u4E07\u76F8\u6295\u6000\u805A\u7389\u821F\u3002\r\n\u51F9\u51F8\u5BF8\u5FC3\u85CF\u5B99\u5B87\uFF0C\u542F\u660E\u7AA5\u6708\u6EAF\u661F\u6D41\u3002"
+  description: "\u955C\u6E56\u4E0D\u60F9\u534A\u5206\u57C3\uFF0C\u5012\u6444\u91CD\u9704\u78A7\u7389\u53F0\u3002\r\n\u865A\u5B9E\u540C\u53C2\u5929\u5730\u5951\uFF0C\u7985\u5FC3\u539F\u5728\u6B62\u6CE2\u5F00\u3002"
   fadeDuration: 0.3
 --- !u!114 &1425318724
 MonoBehaviour:
@@ -4250,7 +4250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: "\u7AE0\u58F9\xB7\u529B"
-  description: "\u56DB\u4E24\u62E8\u5C71\u5CB3\u52BF\u503E\uFF0C\u7384\u67A2\u6697\u8F6C\u7EB3\u98CE\u9706\u3002\r\n\u5343\u94A7\u5C3D\u5316\u9E3F\u6BDB\u4E3E\uFF0C\u59CB\u4FE1\u81EA\u7136\u85CF\u6709\u5F62\u3002"
+  description: "\u963F\u57FA\u64BC\u5730\u8F74\uFF0C\u5BF8\u6728\u62B5\u5C71\u503E\u3002\n\u63A5\u6728\u9634\u9633\u5951\uFF0C\u5371\u697C\u60AC\u6597\u60CA\u3002"
   fadeDuration: 0.3
 --- !u!1 &1766274903
 GameObject:
@@ -4288,7 +4288,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 160}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1766274905
 MonoBehaviour:
@@ -5324,7 +5324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: "1. \u900F\u955C"
-  description: "\u51F9\u51F8\u76F8\u751F\u7ED3\u6784\u5DE7\uFF0C\u65E0\u9489\u65E0\u80F6\u81EA\u575A\u7262\u3002\r\n\u5343\u5E74\u6280\u827A\u4F20\u627F\u4E45\uFF0C\u5999\u624B\u5320\u5FC3\u85CF\u7384\u5965\u3002"
+  description: "\u66F2\u88C1\u7384\u7D20\u5851\u7A7A\u5E7D\uFF0C\u4E07\u76F8\u6295\u6000\u805A\u7389\u821F\u3002\r\n\u51F9\u51F8\u5BF8\u5FC3\u85CF\u5B99\u5B87\uFF0C\u542F\u660E\u7AA5\u6708\u6EAF\u661F\u6D41\u3002"
   fadeDuration: 0.3
 --- !u!114 &2062744384
 MonoBehaviour:

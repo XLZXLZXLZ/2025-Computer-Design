@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : Singleton<LevelManager>
+public class UIControlManager : MonoBehaviour
 {
-    public void FinishLevel()
+    public void Pause()
     {
-        Cover.Instance.ChangeScene("ChooseLevelMenu");
+
     }
 
-    public void RestartLevel()
+    public void Restart()
     {
         Cover.Instance.ChangeScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Exit()
+    {
+        Cover.Instance.ChangeScene("ChooseLevelMenu");
     }
 }

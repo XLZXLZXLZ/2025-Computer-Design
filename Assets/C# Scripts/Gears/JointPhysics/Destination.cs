@@ -25,7 +25,7 @@ public class Destination : MonoBehaviour
                     Destroy(collision.gameObject);
                 })
                 .AppendInterval(2f)
-                .OnComplete(() => LevelManager.Instance.RestartLevel());
+                .OnComplete(() => LevelManager.Instance.FinishLevel());
         }
     }
 }
