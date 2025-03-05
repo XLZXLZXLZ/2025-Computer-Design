@@ -16,6 +16,7 @@ public class LightLine : MonoBehaviour
 
     public Vector2 Origin => origin;
     public Vector2 Dir => dir;
+    public LineRenderer Line => line;
 
     private void Awake()
     {

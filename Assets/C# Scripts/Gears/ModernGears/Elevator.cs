@@ -1,47 +1,55 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Elevator : Gear
 {
-    [SerializeField]
-    private Vector3 targetPos;
+    [SerializeField] private Vector3 relativePos;
+    [SerializeField] private Vector3 targetAngle;
+    [SerializeField] private float moveTime = 1f;
+    [SerializeField] private bool usePhysics = true;
 
-    [SerializeField]
-    private float moveTime = 1f;
-
-    private Vector3 origin;
+    private Rigidbody2D rb;
+    private Vector3 originPos;
+    private Vector3 originAngle;
 
     protected override void Awake()
     {
         base.Awake();
+        rb = GetComponent<Rigidbody2D>();
 
-        origin = transform.position;
-        targetPos += transform.position;
+        originPos = transform.position;
+        originAngle = transform.eulerAngles;
     }
 
     protected override void SwitchOn()
     {
         base.SwitchOn();
-
-        transform.DOMove(targetPos, moveTime).SetEase(Ease.InQuad);
+        MoveToTarget(originPos + relativePos, targetAngle);
     }
 
     protected override void SwitchOff()
     {
         base.SwitchOff();
+        MoveToTarget(originPos, originAngle);
+    }
 
-        transform.DOMove(origin, moveTime).SetEase(Ease.InQuad);
+    private void MoveToTarget(Vector3 targetPos, Vector3 targetEuler)
+    {
+        if (usePhysics)
+        {
+            // 物理模式移动
+            DOTween.To(() => rb.position, (Vector2 x) => rb.MovePosition(x), targetPos, moveTime)
+                .SetEase(Ease.InQuad);
+
+            transform.DORotate(targetEuler, moveTime);
+        }
     }
 
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
-
         Gizmos.color = Color.yellow;
-
-        Gizmos.DrawLine(transform.position + targetPos, transform.position);
-        Gizmos.DrawWireSphere(transform.position + targetPos, 0.5f);
+        Gizmos.DrawLine(transform.position, transform.position + relativePos);
+        Gizmos.DrawWireSphere(transform.position + relativePos, 0.5f);
     }
 }

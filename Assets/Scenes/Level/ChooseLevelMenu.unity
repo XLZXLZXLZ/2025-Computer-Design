@@ -2149,8 +2149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2604d372707400478ba07c70a4e3ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: "\u672A\u5B8C\u6210"
-  description: "(\u522B\u70B9\u8FD9\u4E2A\uFF0C\u4F1A\u5361\u6B7B)"
+  title: "4. \u91CD\u529B"
+  description: "\u661F\u5782\u5764\u8F74\u81EA\u897F\u4E1C\uFF0C\u5760\u529B\u65E0\u5F62\u4E07\u7269\u540C\r\u3002\n\u9A8C\u6CD5\u6D51\u4EEA\u7AA5\u5730\u8109\uFF0C\u60AC\u4EEA\u7D2B\u5E9C\u6D4B\u5929\u5F13\u3002"
   fadeDuration: 0.3
 --- !u!1 &885827252
 GameObject:
