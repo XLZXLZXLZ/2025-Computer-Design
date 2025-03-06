@@ -23,10 +23,10 @@ public class AudioManager : Singleton<AudioManager>
     public float bgmVolume => bgmComponent.volume;
     public float seVolume => seComponent.volume;
 
-<<<<<<< Updated upstream
+
     private float bgmFadeDuration = 1.0f; // 淡入/淡出时间
     private bool isPlaying = false; // 标记是否正在播放
-=======
+
     protected override void Awake()
     {
         base.Awake();
@@ -34,7 +34,7 @@ public class AudioManager : Singleton<AudioManager>
         bgmContainer = Resources.Load<BgmContainer>("AudioClips/BgmContainer");
         soundEffectContainer = Resources.Load<SoundEffectContainer>("AudioClips/SoundEffectContainer");
     }
->>>>>>> Stashed changes
+
 
     private void Start()
     {

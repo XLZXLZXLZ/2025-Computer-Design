@@ -16,15 +16,12 @@ public class MainMenuManager : Singleton<MainMenuManager>
     private int currentChooseChapter = -1;
     private int currentChooseLevel = -1;
 
-<<<<<<< Updated upstream
 
-=======
     protected override void Awake()
     {
         base.Awake();
         AudioManager.Instance.PlayBgm("MainMenuBGM");
     }
->>>>>>> Stashed changes
 
     public void ChooseLevel(int level)
     {
