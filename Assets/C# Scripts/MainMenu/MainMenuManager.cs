@@ -16,6 +16,8 @@ public class MainMenuManager : Singleton<MainMenuManager>
     private int currentChooseChapter = -1;
     private int currentChooseLevel = -1;
 
+
+
     public void ChooseLevel(int level)
     {
         currentChooseLevel = level;
@@ -31,4 +33,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
         var sceneName = "Level" + currentChooseChapter.ToString() + "-" + currentChooseLevel.ToString();
         Cover.Instance.ChangeScene(sceneName);
     }
+
+
 }

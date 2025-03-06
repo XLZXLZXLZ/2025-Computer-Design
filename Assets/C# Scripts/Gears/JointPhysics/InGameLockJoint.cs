@@ -5,10 +5,10 @@ using UnityEngine;
 public class InGameLockJoint : InGameJoint
 {
     private Color showColor = Color.yellow;
-    AudioController audioController;
+    //AudioController audioController;
     private void Start()
     {
-        audioController = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>();
+        //audioController = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>();
     }
     private void OnDrawGizmosSelected()
     {
@@ -18,8 +18,10 @@ public class InGameLockJoint : InGameJoint
 
     public void Release()
     {
+        AudioManager.Instance.PlaySe("Ä¾¹÷ÕÛ¶ÏÒôÐ§");
         onRelease?.Invoke(this);
-        audioController.PlaySfx(audioController.wood_break);
+        
+        //audioController.PlaySfx(audioController.wood_break);
     }
 
 }

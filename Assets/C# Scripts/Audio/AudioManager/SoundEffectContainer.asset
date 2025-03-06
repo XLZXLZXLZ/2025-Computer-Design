@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7df2b979f5698c42a7c31d178c4b756, type: 3}
   m_Name: SoundEffectContainer
   m_EditorClassIdentifier: 
-  soundEffects: []
+  soundEffects:
+  - {fileID: 8300000, guid: 0d2aa10ba2e54b14f8a10bd116bce33e, type: 3}
