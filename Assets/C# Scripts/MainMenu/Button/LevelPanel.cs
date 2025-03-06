@@ -22,6 +22,7 @@ public class LevelPanel : MonoBehaviour
         if(animating)
             return;
         StartCoroutine(BackEnumrator());
+        AudioManager.Instance.PlaySe("ChooseLevel");
     }
 
     public void ChooseLevel(int choice)
@@ -29,6 +30,7 @@ public class LevelPanel : MonoBehaviour
         if (animating)
             return;
         StartCoroutine(ChooseLevelEnumrator(choice));
+        AudioManager.Instance.PlaySe("ChooseLevel");
     }
 
     private IEnumerator BackEnumrator()

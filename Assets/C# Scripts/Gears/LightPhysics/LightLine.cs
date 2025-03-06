@@ -50,7 +50,7 @@ public class LightLine : MonoBehaviour
 
         while (continueTracing && reflections <= maxReflections)
         {
-            RaycastHit2D[] hits = Physics2D.RaycastAll(currentOrigin, currentDir, remainingDistance)
+            RaycastHit2D[] hits = Physics2D.RaycastAll(currentOrigin, currentDir, remainingDistance,~LayerMask.GetMask("BackGround"))
                 .Where(h => !CheckParentCollider(h.collider))
                 .OrderBy(h => h.distance)
                 .ToArray();

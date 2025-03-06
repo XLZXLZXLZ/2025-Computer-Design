@@ -23,6 +23,7 @@ public class ChapterPanel : MonoBehaviour
         if(animating)
             return;
         StartCoroutine(ChooseChapterEnumrator(choice));
+        AudioManager.Instance.PlaySe("ChooseLevel");
     }
 
     private IEnumerator ChooseChapterEnumrator(int choice)
@@ -30,7 +31,7 @@ public class ChapterPanel : MonoBehaviour
         animating = true;
         MainMenuManager.Instance.ChooseChapter(choice);
         Hide();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         levelPanels[choice - 1].Show();
         animating = false;
     }

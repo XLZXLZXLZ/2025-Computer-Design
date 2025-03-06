@@ -20,8 +20,12 @@ public class InGameLockJoint : InGameJoint
     {
         AudioManager.Instance.PlaySe("Ä¾¹÷ÕÛ¶ÏÒôĞ§");
         onRelease?.Invoke(this);
+<<<<<<< Updated upstream
         
         //audioController.PlaySfx(audioController.wood_break);
+=======
+        AudioManager.Instance.PlaySe("LockBreak");
+>>>>>>> Stashed changes
     }
 
 }

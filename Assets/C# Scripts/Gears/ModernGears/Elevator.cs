@@ -25,12 +25,14 @@ public class Elevator : Gear
     {
         base.SwitchOn();
         MoveToTarget(originPos + relativePos, targetAngle);
+        AudioManager.Instance.PlaySe("ElevatorMove");
     }
 
     protected override void SwitchOff()
     {
         base.SwitchOff();
         MoveToTarget(originPos, originAngle);
+        AudioManager.Instance.PlaySe("ElevatorMove");
     }
 
     private void MoveToTarget(Vector3 targetPos, Vector3 targetEuler)

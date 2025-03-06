@@ -7,6 +7,7 @@ public class LevelManager : Singleton<LevelManager>
 {
     public void FinishLevel()
     {
+        AudioManager.Instance.PlaySe("FinishLevel");
         Cover.Instance.ChangeScene("ChooseLevelMenu");
     }
 
