@@ -62,7 +62,7 @@ public class SingleDialogueController : MonoBehaviour
 
     private void PushDialogue()
     {
-        if (currentLineIndex == Dialogue.Count - 1)
+        if (currentLineIndex >= Dialogue.Count - 1)
         {
             EndDialogue();
             return;
@@ -161,7 +161,7 @@ public class SingleDialogueController : MonoBehaviour
                             }
                         }
                         else {
-                            //i++;
+                            i++;
                         } 
 
                         if (i <= linesArray.Count() - 1 && linesArray[i].StartsWith("*")) {
@@ -190,33 +190,6 @@ public class SingleDialogueController : MonoBehaviour
                 }
             }
         }
-
-        //string[] lines = DialogueConfig.Dialogue.text.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
-        //for (int i=0;i < lines.Count(); i++)
-        //{
-        //    string line = lines[i];
-        //    if (line.StartsWith("@")) { 
-        //        string ActorName = line.Substring(1);
-        //        if (DialogueConfig.Actors.IfActorExistInConfig(ActorName))
-        //        {
-        //            i++;
-        //            line = lines[i];
-        //            var newLine = new Lines(ActorName, line,null);
-        //            Dialogue.Add(newLine);
-        //            if (i < lines.Count() - 1 && lines[i + 1].StartsWith("#")) {
-        //                i++;
-        //                for (;i < lines.Count() && lines[i].StartsWith("#"); i++)
-        //                {
-        //                    Debug.Log("检测到按钮");
-        //                    newLine.Chioces.Add(lines[i].Substring(1));
-        //                }
-        //            }
-        //        } else {
-        //            Debug.LogError("读取到不存在的演员信息");
-        //            EndDialogue();
-        //        }
-        //    }
-        //}
     }
 
     void EndDialogue() {
