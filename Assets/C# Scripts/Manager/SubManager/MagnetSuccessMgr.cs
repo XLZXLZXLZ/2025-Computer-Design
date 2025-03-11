@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MagnetSuccessMgr : MonoBehaviour
@@ -13,7 +14,7 @@ public class MagnetSuccessMgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cages = FindObjectsOfType<MagnetCage>().ToList();
     }
 
     // Update is called once per frame
@@ -28,7 +29,6 @@ public class MagnetSuccessMgr : MonoBehaviour
         }
 
         if (Success && cor == null) {
-            Compass.GetComponent<HingeJoint2D>().useMotor = true;
             cor = StartCoroutine(Finish());
             //TODO:ÇÐ»»³¡¾°
         }
