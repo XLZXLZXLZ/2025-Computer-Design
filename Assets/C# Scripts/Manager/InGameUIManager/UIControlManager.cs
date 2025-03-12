@@ -13,10 +13,12 @@ public class UIControlManager : MonoBehaviour
     public void Restart()
     {
         Cover.Instance.ChangeScene(SceneManager.GetActiveScene().name);
+        AudioManager.Instance.PlaySe("ChooseLevel");
     }
 
     public void Exit()
     {
         Cover.Instance.ChangeScene("ChooseLevelMenu");
+        AudioManager.Instance.PlaySe("ChooseLevel");
     }
 }

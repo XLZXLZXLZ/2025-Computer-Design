@@ -31,7 +31,7 @@ public class MagnetCage : MonoBehaviour
         {
             pm.ShutDownMagnet();
             success = true;
-            Debug.Log("Cagged");
+            AudioManager.Instance.PlaySe("Caged");
         }
 
         lid.DORotate(Vector3.forward * -180, 0.5f).SetEase(Ease.OutQuad);

@@ -15,6 +15,8 @@ public class LightAchievements : LightPhysics
     {
         LightLevelManager.Instance.AddLitCount();
         transform.GetChild(0).gameObject.SetActive(true);
+
+        AudioManager.Instance.PlaySe("LightAchievement");
     }
 
     protected override void OnLeave()

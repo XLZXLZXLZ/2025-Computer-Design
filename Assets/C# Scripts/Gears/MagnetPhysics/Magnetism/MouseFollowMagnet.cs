@@ -23,7 +23,10 @@ public class MouseFollowMagnet : MonoBehaviour
         set
         {
             if (isApplying != value)
+            {
                 changeApplyState(value);
+                AudioManager.Instance.PlaySe(value ? "ManetOpen" : "MagnetClose");
+            }
             isApplying = value;
         }
     }

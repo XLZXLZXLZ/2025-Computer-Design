@@ -43,6 +43,8 @@ public class LightLens : LightPhysics
                 {
                     // 切换到 Rotate 状态
                     currentState = State.Rotate;
+
+                    AudioManager.Instance.PlaySe("LensClick");
                 }
             }
             // 如果当前状态是 Rotate，切换到 Lock 状态
