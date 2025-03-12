@@ -3,10 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destination : MonoBehaviour
+public class Destination : MonoBehaviour , ILevelSettlement
 {
     [SerializeField]
     private GameObject particle;
+
+    [SerializeField] float DoubleStarTimeLimit = 60;
+    [SerializeField] float TribleStarTimeLimit = 30;
+    float startTime;
+
+    [HideInInspector] public int Score { get; set; }
+    [SerializeField] LevelSettlementController _lsc;
+    public LevelSettlementController LSC { get => _lsc; }
+
+    public void Settle()
+    {
+        if(Time.time - startTime < TribleStarTimeLimit) 
+            Score = 3;
+        else if(Time.time - startTime < DoubleStarTimeLimit) 
+            Score = 2;
+        else Score = 1;
+
+        LSC.Finished(this);
+    }
+
+    void Start() { 
+        startTime = Time.time;
+    }
+
+    //LevelManager.Instance.FinishLevel()
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,7 +50,7 @@ public class Destination : MonoBehaviour
                     Destroy(collision.gameObject);
                 })
                 .AppendInterval(2f)
-                .OnComplete(() => LevelManager.Instance.FinishLevel());
+                .OnComplete(() => Settle());
         }
     }
 }

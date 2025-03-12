@@ -593,10 +593,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8ce8441f0346b4091a32d4dbfed4ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DoubleStarTimeLimit: 60
+  TribleStarTimeLimit: 30
   Cages:
   - {fileID: 0}
   - {fileID: 0}
   Compass: {fileID: 89765663}
+  _lsc: {fileID: 1356600618}
 --- !u!4 &367857923
 Transform:
   m_ObjectHideFlags: 0
@@ -2306,6 +2309,83 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1356600617
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9013043089122688055, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+      propertyPath: m_AllowMSAA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013043089288746236, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013043089288746236, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013043089288746236, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013043089288746236, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013043089288746236, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013043089288746236, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013043089288746236, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013043089288746236, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013043089288746236, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013043089288746236, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013043089288746236, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013043089288746238, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+      propertyPath: m_Name
+      value: LevelSettlement
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+--- !u!114 &1356600618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9013043089288746239, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+  m_PrefabInstance: {fileID: 1356600617}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3694d9f5b5866904c9f7ec9a8f4dc9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!20 &1356600619 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 9013043089122688055, guid: 7a95901ebecd9034aa528e6fb39f9cc3, type: 3}
+  m_PrefabInstance: {fileID: 1356600617}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1444519250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2407,7 +2487,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 1356600619}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2

@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightLevelManager : Singleton<LightLevelManager>
+public class LightLevelManager : Singleton<LightLevelManager> , ILevelSettlement
 {
+    [SerializeField] float DoubleStarTimeLimit = 60;
+    [SerializeField] float TribleStarTimeLimit = 30;
+    float startTime;
+
     public int TargetLitCount { get; private set; }
 
     private int LitCount;
@@ -30,16 +34,20 @@ public class LightLevelManager : Singleton<LightLevelManager>
         LitCount--;
     }
 
+    void Start() { 
+        _lsc = FindObjectOfType<LevelSettlementController>();
+        startTime = Time.time;
+    }
+
     private void Update()
     {
-        print(LitCount);
+        //print(LitCount);
         if(LitCount >= TargetLitCount && !isFinished)
         {
             timer += Time.deltaTime;
             if (timer > waitTimeToWin)
             {
-                isFinished = true;
-                LevelManager.Instance.FinishLevel();
+                Settle();
             }
         }
         else
@@ -47,4 +55,23 @@ public class LightLevelManager : Singleton<LightLevelManager>
             timer = 0;
         }
     }
+
+
+    [HideInInspector]
+    public int Score { get; set; }
+    [SerializeField] LevelSettlementController _lsc;
+
+    public LevelSettlementController LSC { get => _lsc; }
+
+    public void Settle()
+    {
+        if(Time.time - startTime < TribleStarTimeLimit) 
+            Score = 3;
+        else if(Time.time - startTime < DoubleStarTimeLimit) 
+            Score = 2;
+        else Score = 1;
+        isFinished = true;
+        LSC.Finished(this);
+    }
+
 }
