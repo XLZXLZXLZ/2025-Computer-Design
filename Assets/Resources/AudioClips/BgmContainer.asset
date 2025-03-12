@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BgmContainer
   m_EditorClassIdentifier: 
   bgms:
-  - {fileID: 8300000, guid: f85eeae81f583c4438ecc00942dc29ef, type: 3}
-  - {fileID: 8300000, guid: 3b9ec6529c038ca42bd2d00a05b7aaf4, type: 3}
-  - {fileID: 8300000, guid: e5ed53887662cb84aa2c6b27d15bd27f, type: 3}
-  - {fileID: 8300000, guid: 858b9daff95c2a34cb9211495342f179, type: 3}
-  - {fileID: 8300000, guid: 74ff25f8e0547ba43850230e4ddde85f, type: 3}
+  - {fileID: 8300000, guid: 16677de50d3da3343be8d1c7f6725cde, type: 3}
+  - {fileID: 8300000, guid: 5dc06d71e6e648d4492b68f5328f49f0, type: 3}
+  - {fileID: 8300000, guid: c79de7fa3d4907449bd9f46aa2e35230, type: 3}
+  - {fileID: 8300000, guid: b43768a8ff3742249a0f82c4676972aa, type: 3}
+  - {fileID: 8300000, guid: 9420842ccd4b0eb48b6e36bb05f7977c, type: 3}

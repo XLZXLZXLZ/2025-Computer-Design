@@ -16,7 +16,7 @@ public class InGameLockJoint : InGameJoint
     public void Release()
     {
         onRelease?.Invoke(this);
-        AudioManager.Instance.PlaySe("Ä¾¹÷ÕÛ¶ÏÒôÐ§");
+        AudioManager.Instance.PlaySe("LockBreak");
     }
 
 }
