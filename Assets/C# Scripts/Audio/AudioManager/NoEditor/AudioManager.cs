@@ -31,27 +31,39 @@ public class AudioManager : Singleton<AudioManager>
     {
         base.Awake();
 
-        bgmContainer = Resources.Load<BgmContainer>("AudioClips/BgmContainer");
-        soundEffectContainer = Resources.Load<SoundEffectContainer>("AudioClips/SoundEffectContainer");
-    }
+        // 加载或创建音频容器
+        bgmContainer = Resources.Load<BgmContainer>("AudioClips/BgmContainer") ?? ScriptableObject.CreateInstance<BgmContainer>();
+        soundEffectContainer = Resources.Load<SoundEffectContainer>("AudioClips/SoundEffectContainer") ?? ScriptableObject.CreateInstance<SoundEffectContainer>();
 
+        // 动态加载BGM音频并注入容器
+        AudioClip[] bgmClips = Resources.LoadAll<AudioClip>("AudioClips/Bgm");
+        bgmContainer.bgms.Clear();
+        bgmContainer.bgms.AddRange(bgmClips);
 
-    private void Start()
-    {
+        // 动态加载音效音频并注入容器
+        AudioClip[] seClips = Resources.LoadAll<AudioClip>("AudioClips/SoundEffect");
+        soundEffectContainer.soundEffects.Clear();
+        soundEffectContainer.soundEffects.AddRange(seClips);
+
+        // 建立音频字典
         bgmContainer.bgms.ForEach(bgm => bgms.Add(bgm.name, bgm));
-        soundEffectContainer.soundEffects.ForEach(soundEffect => 
+        soundEffectContainer.soundEffects.ForEach(soundEffect =>
             soundEffects.Add(soundEffect.name, soundEffect));
 
-        audioRoot = Instantiate(new GameObject());
+        // 初始化音频系统
+        audioRoot = new GameObject("AudioRoot");
         DontDestroyOnLoad(audioRoot);
-        audioRoot.name = "AudioRoot";
-        
+
         bgmComponent = audioRoot.AddComponent<AudioSource>();
         bgmComponent.loop = true;
         seComponent = audioRoot.AddComponent<AudioSource>();
 
         SetVolume(0.25f, 0.25f);
+    }
 
+
+    private void Start()
+    {
         // 开始随机播放BGM
         StartCoroutine(RandomBgmPlayer());
     }

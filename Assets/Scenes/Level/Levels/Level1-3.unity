@@ -883,6 +883,10 @@ PrefabInstance:
       propertyPath: targetPos.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 866592793285815808, guid: 40280ccd64033354fae2446e5ffb03fa, type: 3}
+      propertyPath: relativePos.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 866592793575799194, guid: 40280ccd64033354fae2446e5ffb03fa, type: 3}
       propertyPath: m_Name
       value: Elevator

@@ -19,7 +19,7 @@ public class MagnetAnim : MonoBehaviour
         var ps = GetComponent<ParticleSystem>().main;
         (float r, float g, float b) = (startColor.r, startColor.g, startColor.b);
 
-        ps.startColor = new Color(r, g, b, parent.IsApplying ? 0.3f : 0f);
+        ps.startColor = new Color(0, 0, 0, parent.IsApplying ? 0.3f : 0f);
     }
     private void OnApplyStateChange(bool applyState)
     {
