@@ -5,11 +5,8 @@ using UnityEngine;
 public class InGameLockJoint : InGameJoint
 {
     private Color showColor = Color.yellow;
-    //AudioController audioController;
-    private void Start()
-    {
-        //audioController = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>();
-    }
+    
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = showColor;
@@ -18,7 +15,8 @@ public class InGameLockJoint : InGameJoint
 
     public void Release()
     {
-        AudioManager.Instance.PlaySe("LockBreak");
+        onRelease?.Invoke(this);
+        AudioManager.Instance.PlaySe("Ä¾¹÷ÕÛ¶ÏÒôÐ§");
     }
 
 }
