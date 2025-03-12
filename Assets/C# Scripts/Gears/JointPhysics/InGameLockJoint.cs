@@ -5,7 +5,6 @@ using UnityEngine;
 public class InGameLockJoint : InGameJoint
 {
     private Color showColor = Color.yellow;
-    
 
     private void OnDrawGizmosSelected()
     {
@@ -15,6 +14,9 @@ public class InGameLockJoint : InGameJoint
 
     public void Release()
     {
+        if (!GameManager.Instance.CanInteractNow)
+            return;
+
         onRelease?.Invoke(this);
         AudioManager.Instance.PlaySe("LockBreak");
     }

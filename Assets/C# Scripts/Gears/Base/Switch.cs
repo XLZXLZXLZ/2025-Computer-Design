@@ -12,6 +12,9 @@ public class Switch : MonoBehaviour
 
     public void SwitchState(bool isOn)
     {
+        if (!GameManager.Instance.CanInteractNow)
+            return;
+
         if (isOn == IsOn)
             return;
         IsOn = isOn;

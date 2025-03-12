@@ -29,6 +29,9 @@ public class LightLens : LightPhysics
 
     private void HandleMouseInput()
     {
+        if (!GameManager.Instance.CanInteractNow)
+            return;
+
         // ¼ì²â×ó¼üµã»÷
         if (Input.GetMouseButtonDown(0))
         {

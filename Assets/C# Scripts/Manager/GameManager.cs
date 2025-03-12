@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum GameState
     {
-        
+        Load,
+        Dialogue,
+        Interact
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameState CurrentState {  get; set; }
+
+    public bool CanInteractNow => CurrentState == GameState.Interact;
 }

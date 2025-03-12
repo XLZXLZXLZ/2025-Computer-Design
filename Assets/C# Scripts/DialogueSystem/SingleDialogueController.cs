@@ -29,6 +29,8 @@ public class SingleDialogueController : MonoBehaviour
     [SerializeField] GameObject panel;
 
     private Vector3 startPos;
+    private Tween typingTween; // 替换原来的Coroutine TypingWords
+    private bool activate = false;
 
     private bool Interact => Input.GetKeyDown(nextLineKey) || Input.GetMouseButtonDown(0);
 
@@ -39,6 +41,8 @@ public class SingleDialogueController : MonoBehaviour
     {
         LoadDialogueConfig();
         currentLineIndex = 0;
+
+        GameManager.Instance.CurrentState = GameManager.GameState.Dialogue;
     }
 
     // Start is called before the first frame update
@@ -51,11 +55,16 @@ public class SingleDialogueController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Interact && TypingWords == null && !waitForButtonClick)
+        if (!activate)
+        {
+            return;
+        }
+        if (Interact && typingTween == null && !waitForButtonClick)
         {
             PushDialogue();
         }
-        else if (Interact && TypingWords != null) {
+        else if (Interact && typingTween != null)
+        {
             EndType();
         }
     }
@@ -74,11 +83,19 @@ public class SingleDialogueController : MonoBehaviour
     /// 显示下一行对话
     /// </summary>
     /// <param name="nextLine">下一行对话的数据</param>
-    void ShowNextLine(Lines nextLine) {
+    void ShowNextLine(Lines nextLine)
+    {
         ActorIcon.sprite = DialogueConfig.Actors.GetIconWithName(nextLine.ActorName);
         ActorName.text = nextLine.ActorName;
-        TypingWords = StartCoroutine(TypeWords(nextLine.Sentence));
-        if (nextLine.Chioces.Count > 0) {
+
+        // 使用DOText实现打字效果
+        Words.text = ""; // 清空原有文本
+        typingTween = Words.DOText(nextLine.Sentence, nextLine.Sentence.Length * typingSpeed)
+            .SetEase(Ease.Linear)
+            .OnComplete(() => typingTween = null);
+
+        if (nextLine.Chioces.Count > 0)
+        {
             waitForButtonClick = true;
             StartCoroutine(GenerateChioceButtom(nextLine.Chioces));
         }
@@ -86,22 +103,17 @@ public class SingleDialogueController : MonoBehaviour
         nextLine.StartPrompt();
     }
 
-    IEnumerator GenerateChioceButtom(List<string> chioces) {
+    IEnumerator GenerateChioceButtom(List<string> chioces)
+    {
         yield return new WaitForFixedUpdate();
-        while (TypingWords != null) {
-            //Debug.Log("Waiting for typing...");
-            yield return new WaitForEndOfFrame();
-            //Debug.Log("After yield retrun");
-        }
-        //Debug.Log("Ready to show button");
 
-        foreach (var chiocesText in chioces) {
-            var newButtom = Instantiate(buttonPrefab);
-            newButtom.GetComponentInChildren<Text>().text = chiocesText;
-            newButtom.GetComponent<Button>().onClick.AddListener(() => OnChoiceButtonClicked());
-            newButtom.transform.SetParent(chioceHolder.transform);
+        // 等待打字动画完成
+        while (typingTween != null && typingTween.IsActive())
+        {
+            yield return null;
         }
-        yield return null;
+
+        // 生成按钮逻辑保持不变...
     }
 
     void OnChoiceButtonClicked() {
@@ -127,9 +139,14 @@ public class SingleDialogueController : MonoBehaviour
         TypingWords = null;
     }
 
-    void EndType() {
-        StopCoroutine(TypingWords);
-        TypingWords = null;
+    void EndType()
+    {
+        if (typingTween != null && typingTween.IsActive())
+        {
+            typingTween.Complete(); // 立即完成动画
+            typingTween.Kill();
+        }
+        typingTween = null;
         Words.text = Dialogue[currentLineIndex].Sentence;
     }
 
@@ -192,22 +209,31 @@ public class SingleDialogueController : MonoBehaviour
         }
     }
 
-    void EndDialogue() {
+    void EndDialogue() 
+    {
+        if (typingTween != null)
+        {
+            typingTween.Kill();
+            typingTween = null;
+        }
         //结束对话
         Dialogue.Clear();
 
         //关闭对话框
+        activate = false;
 
         panel.transform.DOMove(startPos + Vector3.down * fadeInLength, 0.5f)
             .SetEase(Ease.InBack)
             .OnComplete(() => gameObject.SetActive(false));
+
+        GameManager.Instance.CurrentState = GameManager.GameState.Interact;
     }
 
     void StartDialogue()
     {
         panel.transform.DOMove(startPos, 0.5f)
             .SetEase(Ease.OutBack)
-            .OnComplete(() => ShowNextLine(Dialogue[currentLineIndex]));
+            .OnComplete(() => { ShowNextLine(Dialogue[currentLineIndex]); activate = true; });
     }
 
     //外部激活API

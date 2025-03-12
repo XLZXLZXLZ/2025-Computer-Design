@@ -38,6 +38,9 @@ public class MouseFollowMagnet : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.Instance.CanInteractNow)
+            return;
+
         if (Input.GetMouseButton(0))
         {
             IsApplying = true;
