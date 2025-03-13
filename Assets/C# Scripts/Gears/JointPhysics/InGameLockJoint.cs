@@ -18,6 +18,8 @@ public class InGameLockJoint : InGameJoint
             return;
 
         onRelease?.Invoke(this);
+        GetComponentInChildren<Animator>().Play("UnlockAnimation");
+
         AudioManager.Instance.PlaySe("LockBreak");
     }
 

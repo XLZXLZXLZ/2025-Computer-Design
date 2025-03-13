@@ -665,15 +665,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5658090659871131547, guid: 627e858fed594f649b6132becb04c4e2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5658090659871131547, guid: 627e858fed594f649b6132becb04c4e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.55
+      value: 3.86
       objectReference: {fileID: 0}
     - target: {fileID: 5658090659871131547, guid: 627e858fed594f649b6132becb04c4e2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.24
+      value: -2.36
       objectReference: {fileID: 0}
     - target: {fileID: 5658090659871131547, guid: 627e858fed594f649b6132becb04c4e2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1080,7 +1080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5658090659871131547, guid: 627e858fed594f649b6132becb04c4e2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5658090659871131547, guid: 627e858fed594f649b6132becb04c4e2, type: 3}
       propertyPath: m_LocalScale.y
@@ -1701,7 +1701,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 0.25
   m_LinearDrag: 0.15
-  m_AngularDrag: 0.15
+  m_AngularDrag: 0.5
   m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -1859,13 +1859,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: HingeDoubleSideJointBar
       objectReference: {fileID: 0}
+    - target: {fileID: 1081422236530589821, guid: ac573a97b274b714ca8834d1d1aec677, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.93
+      objectReference: {fileID: 0}
     - target: {fileID: 7592168348744241706, guid: ac573a97b274b714ca8834d1d1aec677, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5.6150002
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7592168348744241706, guid: ac573a97b274b714ca8834d1d1aec677, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.1927
+      value: 1.84
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac573a97b274b714ca8834d1d1aec677, type: 3}
@@ -2725,8 +2729,8 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: -0.40620318, y: -0.02220726}
-  m_ConnectedAnchor: {x: -0.6262032, y: -2.6522074}
+  m_Anchor: {x: -0.43638754, y: -0.110886574}
+  m_ConnectedAnchor: {x: -0.65638757, y: -2.7408867}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2818,7 +2822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5658090659871131547, guid: 627e858fed594f649b6132becb04c4e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.95
+      value: -5.94
       objectReference: {fileID: 0}
     - target: {fileID: 5658090659871131547, guid: 627e858fed594f649b6132becb04c4e2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2936,7 +2940,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065568673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.1536717, y: -4.6843514, z: 0.019251935}
+  m_LocalPosition: {x: 2.85, y: -4.6843514, z: 0.019251935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3040,7 +3044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5258335602080398746, guid: 52511dd597518a44d896c3f2e93bb810, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.8199997
+      value: -3.46
       objectReference: {fileID: 0}
     - target: {fileID: 5258335602080398746, guid: 52511dd597518a44d896c3f2e93bb810, type: 3}
       propertyPath: m_LocalPosition.y
