@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class LightLens : LightPhysics
 {
     private LightLine line;
+    private Vector3 originalScale;
 
     private enum State
     {
@@ -12,18 +14,18 @@ public class LightLens : LightPhysics
         Rotate
     }
 
-    private State currentState = State.Lock; // 初始状态为 Lock
+    private State currentState = State.Lock;
 
     private void Awake()
     {
         line = GetComponentInChildren<LightLine>();
         line.SetActivate(false);
+        originalScale = transform.localScale;
     }
 
     private void Update()
     {
         HandleMouseInput();
-        HandleRotateState();
         Effect();
     }
 
@@ -32,40 +34,45 @@ public class LightLens : LightPhysics
         if (!GameManager.Instance.CanInteractNow)
             return;
 
-        // 检测左键点击
         if (Input.GetMouseButtonDown(0))
         {
-            // 如果当前状态是 Lock，检查是否点击了物体
-            if (currentState == State.Lock)
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+
+            if (hit.collider != null && (hit.collider.gameObject == gameObject || (hit.collider.transform.parent.gameObject == gameObject)))
             {
-                // 使用射线检测是否点击了当前物体
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-
-                if (hit.collider != null && hit.collider.gameObject == gameObject)
+                if (currentState == State.Lock)
                 {
-                    // 切换到 Rotate 状态
                     currentState = State.Rotate;
-
+                    PlaySelectAnimation();
                     AudioManager.Instance.PlaySe("LensClick");
                 }
             }
-            // 如果当前状态是 Rotate，切换到 Lock 状态
-            else if (currentState == State.Rotate)
+            else
             {
-                currentState = State.Lock;
+                if (currentState == State.Rotate)
+                {
+                    RotateTowardsMouse();
+                    currentState = State.Lock;
+                }
             }
         }
     }
 
-    private void HandleRotateState()
+    private void PlaySelectAnimation()
     {
-        // 如果当前状态是 Rotate，逐帧更新物体的 transform.right
-        if (currentState == State.Rotate)
-        {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.right = mousePosition - (Vector2)transform.position;
-        }
+        transform.DOPunchScale(originalScale * 0.2f, 0.5f, 2, 0.5f);
+    }
+
+    private void RotateTowardsMouse()
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = mousePosition - (Vector2)transform.position;
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        transform.DORotate(new Vector3(0, 0, targetAngle), 0.5f)
+            .SetEase(Ease.OutQuad)
+            .OnComplete(() => transform.right = direction.normalized);
     }
 
     private void Effect()

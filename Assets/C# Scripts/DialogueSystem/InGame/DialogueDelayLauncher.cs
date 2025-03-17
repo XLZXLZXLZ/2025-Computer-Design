@@ -8,8 +8,7 @@ public class DialogueDelayLauncher : MonoBehaviour
     [SerializeField]
     private SingleDialogueController targetDialogue;
 
-    [SerializeField]
-    private float delay = 3f;
+    private float delay = 5f;
 
     private void Start()
     {
