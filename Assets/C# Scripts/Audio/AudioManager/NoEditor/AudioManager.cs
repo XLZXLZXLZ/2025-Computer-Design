@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using static Unity.VisualScripting.Member;
 
 public class AudioManager : Singleton<AudioManager>
 {
@@ -20,8 +21,8 @@ public class AudioManager : Singleton<AudioManager>
     private AudioSource seComponent;
     // private List<AudioSource> soundEffectComponents = new();
 
-    public float bgmVolume => bgmComponent.volume;
-    public float seVolume => seComponent.volume;
+    [SerializeField] public float bgmVolume =0.25f;
+    [SerializeField] public float seVolume =0.4f;
 
 
     private float bgmFadeDuration = 1.0f; // 淡入/淡出时间
@@ -59,6 +60,8 @@ public class AudioManager : Singleton<AudioManager>
         seComponent = audioRoot.AddComponent<AudioSource>();
 
         SetVolume(0.25f, 0.25f);
+
+
     }
 
 
@@ -67,7 +70,6 @@ public class AudioManager : Singleton<AudioManager>
         // 开始随机播放BGM
         StartCoroutine(RandomBgmPlayer());
     }
-
 
 
     public void PlaySe(string seName)
@@ -91,6 +93,7 @@ public class AudioManager : Singleton<AudioManager>
     //随机播放BGM列表里的BGM，完全由AudioManager控制，不随场景、关卡变化
     private IEnumerator RandomBgmPlayer()
     {
+
         while (true)
         {
             if (!isPlaying)
@@ -121,7 +124,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         yield return new WaitForSeconds(bgmFadeDuration); // 等待淡出完成
         bgmComponent.clip = nextBgm;
-        StartCoroutine(FadeInBgm(bgmComponent, 1.0f, bgmFadeDuration));
+        StartCoroutine(FadeInBgm(bgmComponent, bgmVolume, bgmFadeDuration));
     }
 
     private IEnumerator FadeInBgm(AudioSource source, float targetVolume, float duration)
@@ -159,12 +162,14 @@ public class AudioManager : Singleton<AudioManager>
 
 
     //下面暂时没用到，留着以后看看有不有用
-    public void PlayBgm(string bgmName)
+    public void PlayBgm()
     {
-        if (!bgms.ContainsKey(bgmName)) return;
-        bgmComponent.clip = bgms[bgmName];
-        StartCoroutine(BGMFadeIn(bgmComponent.volume, 1f));
+        /*        if (!bgms.ContainsKey(bgmName)) return;
+                bgmComponent.clip = bgms[bgmName];*/
+
+        StartCoroutine(RandomBgmPlayer());
     }
+
 
     private IEnumerator BGMFadeIn(float target, float duration)
     {

@@ -17,11 +17,13 @@ public class MainMenuManager : Singleton<MainMenuManager>
     private int currentChooseLevel = -1;
 
 
-    protected override void Awake()
+/*    protected override void Awake()
     {
         base.Awake();
-        AudioManager.Instance.PlayBgm("MainMenuBGM");
-    }
+        //AudioManager.Instance.PlayBgm();
+    }*/
+
+
 
     public void ChooseLevel(int level)
     {
