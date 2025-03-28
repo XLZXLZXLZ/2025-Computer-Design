@@ -607,7 +607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5706249167470595852, guid: 0966699baa58253449720e2f425ec7fe, type: 3}
       propertyPath: magnetMultiplier.x
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5706249167470595855, guid: 0966699baa58253449720e2f425ec7fe, type: 3}
       propertyPath: m_RootOrder

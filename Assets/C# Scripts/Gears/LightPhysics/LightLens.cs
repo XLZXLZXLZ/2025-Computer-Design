@@ -39,14 +39,11 @@ public class LightLens : LightPhysics
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
-            if (hit.collider != null && (hit.collider.gameObject == gameObject || (hit.collider.transform.parent.gameObject == gameObject)))
+            if (hit.collider != null && (hit.collider.gameObject == gameObject || ((hit.collider.transform.parent != null) && (hit.collider.transform.parent.gameObject == gameObject))))
             {
-                if (currentState == State.Lock)
-                {
-                    currentState = State.Rotate;
-                    PlaySelectAnimation();
-                    AudioManager.Instance.PlaySe("LensClick");
-                }
+                currentState = State.Rotate;
+                PlaySelectAnimation();
+                AudioManager.Instance.PlaySe("LensClick");
             }
             else
             {
