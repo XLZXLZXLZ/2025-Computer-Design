@@ -33,6 +33,7 @@ public class LevelSettlementController : MonoBehaviour
 
     public void Finished(ILevelSettlement levelSettlementHandler) {
         UI.SetActive(true);
+        LevelChooseManager.Instance.OnCheckPointPassed(levelSettlementHandler);
         //根据分数处理UI
         StartCoroutine(finished(levelSettlementHandler));
     }
