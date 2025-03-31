@@ -35,7 +35,7 @@ public class LevelChooseManager : Singleton<LevelChooseManager>
         if (Input.GetKey(KeyCode.R)) {
             ResetTimer += Time.fixedDeltaTime;
             if (ResetTimer > 3) {
-                LevelRecords.Reset();
+                LevelRecords.ResetData();
                 ResetTimer = 0;
             }
         } else { ResetTimer = 0; }
@@ -58,5 +58,11 @@ public class LevelChooseManager : Singleton<LevelChooseManager>
         if(sceneCount < LevelRecords.LevelDatas.Count-1){ 
             LevelRecords.LevelDatas[sceneCount+1].Accessable = true;
         }
+    }
+
+    public int GetStarCount(int chapter,int level){ 
+        string info = "Level" + chapter.ToString() + '-' + level.ToString();
+        var record = LevelRecords.LevelDatas.Find((x) => x.LevelName.Equals(info));
+        return record.StarCount;
     }
 }

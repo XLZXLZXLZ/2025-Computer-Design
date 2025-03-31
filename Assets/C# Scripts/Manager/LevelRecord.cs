@@ -22,7 +22,7 @@ public class LevelRecord : ScriptableObject
 {
     public List<LevelData> LevelDatas = new List<LevelData>();
 
-    public void Reset() {
+    public void ResetData() {
         Debug.Log($"LevelData:{name}Reseted");
         LevelDatas = new();
         int sceneCount = SceneManager.sceneCountInBuildSettings;
