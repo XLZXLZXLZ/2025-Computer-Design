@@ -1784,17 +1784,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 892135874}
     m_Modifications:
-    - target: {fileID: 1081422235455553612, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.58
-      objectReference: {fileID: 0}
     - target: {fileID: 1081422235980082258, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1081422235980082258, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081422235980082258, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.76
+      value: 0.56
       objectReference: {fileID: 0}
     - target: {fileID: 1081422235980082258, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1835,18 +1835,6 @@ PrefabInstance:
     - target: {fileID: 1081422235980082260, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
       propertyPath: m_Name
       value: HingeFixedJointBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 1131869419204556809, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5475906262962292850, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 7592168348744241706, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
@@ -2746,22 +2734,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 3546060886108775731, guid: 9475914da417a71479508b68052e07e2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3546060886108775731, guid: 9475914da417a71479508b68052e07e2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.009
-      objectReference: {fileID: 0}
-    - target: {fileID: 3546060886108775731, guid: 9475914da417a71479508b68052e07e2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 8085440939153683538, guid: 9475914da417a71479508b68052e07e2, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 6ac24c91b6944724ba2f3af77e98face, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9475914da417a71479508b68052e07e2, type: 3}
 --- !u!1 &1086889751

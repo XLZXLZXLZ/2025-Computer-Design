@@ -1799,6 +1799,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -3.71
       objectReference: {fileID: 0}
+    - target: {fileID: 1081422235455553612, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.22
+      objectReference: {fileID: 0}
     - target: {fileID: 1081422235980082258, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1847,17 +1851,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: HingeFixedJointBar
       objectReference: {fileID: 0}
+    - target: {fileID: 1081422235980082260, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1131869419204556809, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 8
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5475906262962292850, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.65
       objectReference: {fileID: 0}
+    - target: {fileID: 5475906262962292850, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.19
+      objectReference: {fileID: 0}
     - target: {fileID: 7592168348744241706, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 8
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8457402894176661006, guid: 9b459c2c08185674f82f9c4f887f91b1, type: 3}
       propertyPath: m_IsActive
