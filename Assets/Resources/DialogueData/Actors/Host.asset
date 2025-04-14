@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc868bddf41266e48ac0035e4c3ff88d, type: 3}
   m_Name: Host
   m_EditorClassIdentifier: 
-  Name: Host
-  Icon: {fileID: 21300000, guid: 75ea5e46b07049f4a89ea70645dad7f1, type: 3}
+  Name: "\u5C0F\u9F99"
+  Icon: {fileID: 21300000, guid: 83401f0bd19967a46a97102a6c2d9163, type: 3}

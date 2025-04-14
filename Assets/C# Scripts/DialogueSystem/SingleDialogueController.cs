@@ -246,7 +246,7 @@ public class SingleDialogueController : MonoBehaviour
 public static class DialogueSystemExtension {
     public static bool IfActorExistInConfig(this List<SingleDialogueActorData> actors,string doubtfulActor) {
         foreach (var actor in actors) {
-            if (actor.name.Equals(doubtfulActor)) return true;
+            if (actor.Name.Equals(doubtfulActor)) return true;
         }
 
         return false;
