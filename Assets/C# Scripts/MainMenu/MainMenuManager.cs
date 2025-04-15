@@ -37,8 +37,14 @@ public class MainMenuManager : Singleton<MainMenuManager>
         for (int i = 0; i < 3; i++)
         {
             var chapterBtn = ChapterPanel.transform.GetChild(i);
-            chapterBtn.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0.3f); // 半透明
+            chapterBtn.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0.3f); // 章节按钮(小恐龙)半透明
             chapterBtn.GetComponent<Button>().interactable = false; // 禁用交互
+
+            var perLevel = transform.GetChild(2 + i);//2为层级中偏移
+            //初始化每个小关的选择按钮为不可见
+            for(int j=0;j< 4; j++){ 
+                perLevel.GetChild(j).gameObject.SetActive(false);
+            }
         }
 
         // 遍历所有关卡数据配置
@@ -51,6 +57,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
             if (data.Accessable) // 如果关卡已解锁
             {
+
                 // 激活对应章节按钮
                 var chapterBtn = ChapterPanel.transform.GetChild(chapter - 1);
                 chapterBtn.GetChild(0).GetComponent<Image>().color = Color.white;    // 白色
@@ -65,9 +72,30 @@ public class MainMenuManager : Singleton<MainMenuManager>
             {
                 // 禁用对应关卡按钮
                 Transform levelBtn = transform.GetChild(chapter + 1).GetChild(level - 1);
-                levelBtn.GetComponent<Image>().color = new Color(1, 1, 1, 0.3f);
+                levelBtn.GetChild(1).GetComponent<Image>().color = new Color(1, 1, 1, 0.3f);
                 levelBtn.GetComponent<Button>().interactable = false;
             }
+        }
+    }
+
+    /// <summary>
+    /// 当按下小恐龙按钮时，之战时当前章节的关卡选择按钮，否则会遮挡导致UI显示不正确
+    /// </summary>
+    public void ShowLevelBtn(int chapter){
+        // 关闭其他章节的关卡选择按钮
+        Transform perLevel;
+        for (int i=1;i <= 3;i++){
+            if (i == chapter) continue;
+            perLevel = transform.GetChild(1 + i);//1为层级中偏移
+            for (int j = 0; j < 4; j++) {
+                perLevel.GetChild(j).gameObject.SetActive(false);
+            }
+        }
+        
+        // 激活当前章节的关卡选择按钮
+        perLevel = transform.GetChild(1 + chapter);//1为层级中偏移
+        for (int j = 0; j < 4; j++) {
+            perLevel.GetChild(j).gameObject.SetActive(true);
         }
     }
 
