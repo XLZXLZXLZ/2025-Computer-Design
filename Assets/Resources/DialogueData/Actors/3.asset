@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc868bddf41266e48ac0035e4c3ff88d, type: 3}
-  m_Name: TestActor_2
+  m_Name: 3
   m_EditorClassIdentifier: 
-  Name: TestActor_2
-  Icon: {fileID: 21300000, guid: f28ad9b4cef50094f8146d61dd73b5e8, type: 3}
+  Name: E
+  Icon: {fileID: 21300000, guid: d0292ae719a3a1b418821e86759fb6a6, type: 3}

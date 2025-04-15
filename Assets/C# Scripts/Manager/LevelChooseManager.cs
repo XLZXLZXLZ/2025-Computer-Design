@@ -13,7 +13,7 @@ public class LevelChooseManager : Singleton<LevelChooseManager>
     float CheatTimer = 0f;
     float ResetTimer = 0f;
 
-    private void Awake() {
+    protected override void Awake() {
         base.Awake();
         LevelRecords = Resources.Load<LevelRecord>(DataPath);
         MainMenuManager.Instance.InitialLevelData();
