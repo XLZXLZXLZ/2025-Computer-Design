@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7f8b9833efd5a47b55029eb6acd685, type: 3}
+  m_Name: Level2-4
+  m_EditorClassIdentifier: 
+  Actors:
+  - {fileID: 11400000, guid: 2f022b7fd8861b74db0ef5feeb726b85, type: 2}
+  - {fileID: 11400000, guid: 4f9ca4133e8f41d43b861e6010956264, type: 2}
+  - {fileID: 11400000, guid: 339372d1eedf7254f98a51520e6f47ad, type: 2}
+  - {fileID: 11400000, guid: 2eb22742d35c58c47ab2931eb4a521df, type: 2}
+  - {fileID: 11400000, guid: a75e5575ce8e11443be2bf6ff29f1f67, type: 2}
+  Dialogue: {fileID: 4900000, guid: f59f6043c9d8fbb4cbb1b06c04ad6ea8, type: 3}

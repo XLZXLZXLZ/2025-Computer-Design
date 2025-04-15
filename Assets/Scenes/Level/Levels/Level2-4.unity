@@ -1965,7 +1965,7 @@ PrefabInstance:
     - target: {fileID: 3056184220869320619, guid: b0a62452f12e4ca4393b2a72278b232c, type: 3}
       propertyPath: DialogueConfig
       value: 
-      objectReference: {fileID: 11400000, guid: 3b26defb5d171a843ab2920b6f0ed6d2, type: 2}
+      objectReference: {fileID: 11400000, guid: 438a471667727b04cbe8913b8d9a5161, type: 2}
     - target: {fileID: 3056184220869320619, guid: b0a62452f12e4ca4393b2a72278b232c, type: 3}
       propertyPath: skipCurrentLineKey
       value: 13
