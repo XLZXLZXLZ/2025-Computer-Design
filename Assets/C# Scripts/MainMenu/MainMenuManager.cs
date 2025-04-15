@@ -3,78 +3,97 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// 主菜单管理类，继承自单例模式基类，用于管理主菜单界面逻辑
 public class MainMenuManager : Singleton<MainMenuManager>
 {
     [SerializeField]
-    private MainMenuText title;
+    private MainMenuText title;          // 菜单标题文本组件
     [SerializeField]
-    private MainMenuText description;
+    private MainMenuText description;    // 菜单描述文本组件
     [SerializeField]
-    private ChapterPanel ChapterPanel;
+    private ChapterPanel ChapterPanel;   // 章节选择面板组件
 
+    // 属性访问器
     public MainMenuText Title => title;
     public MainMenuText Description => description;
 
+    // 当前选择的章节和关卡索引（-1表示未选择状态）
     private int currentChooseChapter = -1;
     private int currentChooseLevel = -1;
 
-
-    /*    protected override void Awake()
-        {
-            base.Awake();
-            //AudioManager.Instance.PlayBgm();
-        }*/
-
-
-    private void Start() {
-        
+    private void Start()
+    {
+        // 初始化方法保留位（可添加启动逻辑）
     }
 
-    //加载关卡数据，关闭一些按钮
-    public void InitialLevelData(){
-        int chapter;
-        int level;
-        string temp;
-        string[] chapter_levelInfo;
-        for(int i=0;i < 3;i++){ 
-            var c = ChapterPanel.transform.GetChild(i);
-            c.GetComponent<Image>().color = new Vector4(0.5f,0.5f,0.5f,1);
-            c.GetComponent<Button>().interactable = false;
+    /// <summary>
+    /// 初始化关卡数据并更新UI状态
+    /// 1. 默认禁用所有章节按钮
+    /// 2. 根据关卡解锁状态更新对应按钮的交互状态和颜色
+    /// </summary>
+    public void InitialLevelData()
+    {
+        // 初始化前3个章节按钮为禁用状态（灰色）
+        for (int i = 0; i < 3; i++)
+        {
+            var chapterBtn = ChapterPanel.transform.GetChild(i);
+            chapterBtn.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1); // 灰色
+            chapterBtn.GetComponent<Button>().interactable = false; // 禁用交互
         }
 
-        foreach(var data in LevelChooseManager.Instance.LevelRecords.LevelDatas){
-            temp = new(data.LevelName);
-            chapter_levelInfo = temp.Replace("Level", "").Split("-");
-            chapter = int.Parse(chapter_levelInfo[0]);
-            level = int.Parse(chapter_levelInfo[1]);
-            if(data.Accessable){ 
-                ChapterPanel.transform.GetChild(chapter-1).GetComponent<Image>().color = new Vector4(1,1,1,1);
-                ChapterPanel.transform.GetChild(chapter-1).GetComponent<Button>().interactable = true;
+        // 遍历所有关卡数据配置
+        foreach (var data in LevelChooseManager.Instance.LevelRecords.LevelDatas)
+        {
+            // 解析关卡名称格式（示例："Level1-3" -> 章节1 关卡3）
+            string[] chapter_levelInfo = data.LevelName.Replace("Level", "").Split("-");
+            int chapter = int.Parse(chapter_levelInfo[0]);
+            int level = int.Parse(chapter_levelInfo[1]);
 
-                transform.GetChild(chapter+1).GetChild(level-1).GetComponent<Image>().color = new Vector4(1,1,1,1);
-                transform.GetChild(chapter+1).GetChild(level-1).GetComponent<Button>().interactable = true;
-            } else {
-                transform.GetChild(chapter + 1).GetChild(level - 1).GetComponent<Image>().color = new Vector4(0.5f, 0.5f, 0.5f, 1);
-                transform.GetChild(chapter + 1).GetChild(level - 1).GetComponent<Button>().interactable = false;
+            if (data.Accessable) // 如果关卡已解锁
+            {
+                // 激活对应章节按钮
+                var chapterBtn = ChapterPanel.transform.GetChild(chapter - 1);
+                chapterBtn.GetComponent<Image>().color = Color.white;    // 白色
+                chapterBtn.GetComponent<Button>().interactable = true;  // 启用交互
+
+                // 激活对应关卡按钮（+1偏移量可能因UI层级结构）
+                Transform levelBtn = transform.GetChild(chapter + 1).GetChild(level - 1);
+                levelBtn.GetComponent<Image>().color = Color.white;
+                levelBtn.GetComponent<Button>().interactable = true;
+            }
+            else // 关卡未解锁
+            {
+                // 禁用对应关卡按钮
+                Transform levelBtn = transform.GetChild(chapter + 1).GetChild(level - 1);
+                levelBtn.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1);
+                levelBtn.GetComponent<Button>().interactable = false;
             }
         }
     }
 
+    /// <summary>
+    /// 记录当前选择的关卡索引
+    /// </summary>
     public void ChooseLevel(int level)
     {
         currentChooseLevel = level;
     }
 
+    /// <summary>
+    /// 记录当前选择的章节索引
+    /// </summary>
     public void ChooseChapter(int chapter)
     {
         currentChooseChapter = chapter;
     }
 
+    /// <summary>
+    /// 启动游戏场景加载
+    /// 根据选择的章节关卡生成场景名称（示例："Level2-1"）
+    /// </summary>
     public void StartGame()
     {
-        var sceneName = "Level" + currentChooseChapter.ToString() + "-" + currentChooseLevel.ToString();
-        Cover.Instance.ChangeScene(sceneName);
+        string sceneName = $"Level{currentChooseChapter}-{currentChooseLevel}";
+        Cover.Instance.ChangeScene(sceneName); // 通过场景过渡管理器加载场景
     }
-
-
 }

@@ -18,7 +18,7 @@ public class ChooseLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         int level = int.Parse(info[1]);
         int starCount = LevelChooseManager.Instance.GetStarCount(chapter,level);
         for(int i=starCount;i < 3;i++){
-            transform.GetChild(1).GetChild(i).gameObject.SetActive(false);
+            transform.Find("StarHolder").GetChild(i).gameObject.SetActive(false);
         }
         animator = GetComponent<Animator>();
     }
@@ -43,5 +43,10 @@ public class ChooseLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     void HideStar(){
         animator.Play("HideStar");
+    }
+
+    public void SetUnlockState(bool isUnlocked)
+    {
+
     }
 }
