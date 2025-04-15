@@ -37,7 +37,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         for (int i = 0; i < 3; i++)
         {
             var chapterBtn = ChapterPanel.transform.GetChild(i);
-            chapterBtn.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1); // 灰色
+            chapterBtn.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0.3f); // 半透明
             chapterBtn.GetComponent<Button>().interactable = false; // 禁用交互
         }
 
@@ -53,7 +53,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
             {
                 // 激活对应章节按钮
                 var chapterBtn = ChapterPanel.transform.GetChild(chapter - 1);
-                chapterBtn.GetComponent<Image>().color = Color.white;    // 白色
+                chapterBtn.GetChild(0).GetComponent<Image>().color = Color.white;    // 白色
                 chapterBtn.GetComponent<Button>().interactable = true;  // 启用交互
 
                 // 激活对应关卡按钮（+1偏移量可能因UI层级结构）
@@ -65,7 +65,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
             {
                 // 禁用对应关卡按钮
                 Transform levelBtn = transform.GetChild(chapter + 1).GetChild(level - 1);
-                levelBtn.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1);
+                levelBtn.GetComponent<Image>().color = new Color(1, 1, 1, 0.3f);
                 levelBtn.GetComponent<Button>().interactable = false;
             }
         }
