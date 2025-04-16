@@ -41,7 +41,7 @@ public class LevelSettlementController : MonoBehaviour
     IEnumerator finished(ILevelSettlement levelSettlementHandler) {
         RectTransform backRect = UI.transform.GetChild(0).GetComponent<RectTransform>();
         float y = backRect.anchoredPosition.y;
-        backRect.anchoredPosition = new Vector2(backRect.anchoredPosition.x, -y);
+        backRect.anchoredPosition = new Vector2(backRect.anchoredPosition.x, y - Screen.height);
         backRect.gameObject.SetActive(true);
 
         bool block = false;
