@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc868bddf41266e48ac0035e4c3ff88d, type: 3}
-  m_Name: 2
+  m_Name: Laughing
   m_EditorClassIdentifier: 
-  Name: S
-  Icon: {fileID: 21300000, guid: db174522d31b0964c818084ed98691f1, type: 3}
+  Name: L
+  Icon: {fileID: 21300000, guid: e032aef64e2fc9241a4f349460df39fa, type: 3}

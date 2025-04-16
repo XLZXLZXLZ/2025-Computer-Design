@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc868bddf41266e48ac0035e4c3ff88d, type: 3}
-  m_Name: 1
+  m_Name: Thinking
   m_EditorClassIdentifier: 
-  Name: I
-  Icon: {fileID: 21300000, guid: cebd0e34bb4bd5443b454257e5842264, type: 3}
+  Name: T
+  Icon: {fileID: 21300000, guid: 83401f0bd19967a46a97102a6c2d9163, type: 3}

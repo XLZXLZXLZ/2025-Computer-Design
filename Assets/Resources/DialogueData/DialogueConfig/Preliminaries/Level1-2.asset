@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Level1-2
   m_EditorClassIdentifier: 
   Actors:
-  - {fileID: 11400000, guid: 6642c325e05fb32439979a46fec2cd85, type: 2}
+  - {fileID: 11400000, guid: 2f022b7fd8861b74db0ef5feeb726b85, type: 2}
+  - {fileID: 11400000, guid: a75e5575ce8e11443be2bf6ff29f1f67, type: 2}
+  - {fileID: 11400000, guid: 2eb22742d35c58c47ab2931eb4a521df, type: 2}
+  - {fileID: 11400000, guid: 4f9ca4133e8f41d43b861e6010956264, type: 2}
+  - {fileID: 11400000, guid: 339372d1eedf7254f98a51520e6f47ad, type: 2}
   Dialogue: {fileID: 4900000, guid: f6315648b869f6f4aacb7401bfff365a, type: 3}
