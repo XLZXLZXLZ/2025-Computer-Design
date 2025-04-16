@@ -16,6 +16,10 @@ public class LevelChooseManager : Singleton<LevelChooseManager>
     protected override void Awake() {
         base.Awake();
         LevelRecords = Resources.Load<LevelRecord>(DataPath);
+        if(PlayerPrefs.GetInt("PlayerType",0) == 2)
+        {
+            LevelRecords = Resources.Load<LevelRecord>("LevelRecord/Cheat");
+        }
         MainMenuManager.Instance.InitialLevelData();
     }
 

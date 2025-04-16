@@ -2,11 +2,15 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartMenu : MonoBehaviour
 {
     [SerializeField]
     private float startDelay = 1f;
+
+    [SerializeField]
+    private Text playerTypeText;
 
     public void Start()
     {
@@ -15,7 +19,7 @@ public class StartMenu : MonoBehaviour
             var t = transform.GetChild(i).GetComponent<RectTransform>();
             DOTween.Sequence()
                 .AppendInterval(startDelay + i * 0.4f)
-                .Append(t.DOScale(1f,1f).SetEase(Ease.OutBack));
+                .Append(t.DOScale(transform.localScale,1f).SetEase(Ease.OutBack));
             t.localScale = Vector3.zero;
         }
     }
@@ -28,5 +32,13 @@ public class StartMenu : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void ChangePlayerType()
+    {
+        var t = PlayerPrefs.GetInt("PlayerType", 0);
+        t = t % 2 + 1;
+        PlayerPrefs.SetInt("PlayerType", t);
+        playerTypeText.text = t == 1 ? "标准模式" : "评委模式";
     }
 }
