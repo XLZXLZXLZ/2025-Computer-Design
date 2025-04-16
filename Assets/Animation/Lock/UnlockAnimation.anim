@@ -143,9 +143,9 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 0.9843137
-        inSlope: -0.075294115
-        outSlope: -0.075294115
+        value: 0.99607843
+        inSlope: -0.018823529
+        outSlope: -0.018823529
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -163,7 +163,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: Mortise
+    path: Tenon/Sprite (1)
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   - curve:
@@ -180,9 +180,9 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 0.9843137
-        inSlope: -0.075294115
-        outSlope: -0.075294115
+        value: 0.99607843
+        inSlope: -0.018823529
+        outSlope: -0.018823529
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -200,7 +200,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: Tenon
+    path: Mortise/Sprite
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_PPtrCurves: []
@@ -240,14 +240,14 @@ AnimationClip:
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1485946209
+      path: 3130119180
       attribute: 304273561
       script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 225395770
+      path: 1319162647
       attribute: 304273561
       script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
       typeID: 114
@@ -401,9 +401,9 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 0.9843137
-        inSlope: -0.075294115
-        outSlope: -0.075294115
+        value: 0.99607843
+        inSlope: -0.018823529
+        outSlope: -0.018823529
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -421,7 +421,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: Mortise
+    path: Tenon/Sprite (1)
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   - curve:
@@ -438,9 +438,9 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 0.9843137
-        inSlope: -0.075294115
-        outSlope: -0.075294115
+        value: 0.99607843
+        inSlope: -0.018823529
+        outSlope: -0.018823529
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -458,7 +458,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: Tenon
+    path: Mortise/Sprite
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_EulerEditorCurves: []
