@@ -45,8 +45,10 @@ public class TipPanel : MonoBehaviour
         m_Pages[0].SetActive(true);
     }
 
-    public void NextPage(){ 
-        if(m_PageIndex < m_PageCount-1){
+    public void NextPage(){
+        Debug.Log("111");
+
+        if (m_PageIndex < m_PageCount-1){
             m_Pages[m_PageIndex].SetActive(false);
             m_Pages[++m_PageIndex].SetActive(true);
         } else {
@@ -55,9 +57,14 @@ public class TipPanel : MonoBehaviour
     }
 
     public void GoLastPage(){
-        if (m_PageIndex == m_PageCount - 1) return;
+        //if (m_PageIndex == m_PageCount - 1) return;
+        //m_Pages[m_PageIndex].SetActive(false);
+        //m_PageIndex = m_Pages.Count-1;
+        //m_Pages[m_PageIndex].SetActive(true);
+
+        if (m_PageIndex == 0) return;
         m_Pages[m_PageIndex].SetActive(false);
-        m_PageIndex = m_Pages.Count-1;
+        m_PageIndex--;
         m_Pages[m_PageIndex].SetActive(true);
     }
 
