@@ -1613,9 +1613,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 892135874}
     m_Modifications:
+    - target: {fileID: 1820151023635808687, guid: 6c27120d6cfd66341aaadec86ffefd5d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820151023635808687, guid: 6c27120d6cfd66341aaadec86ffefd5d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1208448715
+      objectReference: {fileID: 0}
     - target: {fileID: 1917389393939658891, guid: 6c27120d6cfd66341aaadec86ffefd5d, type: 3}
       propertyPath: m_Name
       value: LightPrism
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917389393939658894, guid: 6c27120d6cfd66341aaadec86ffefd5d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917389393939658894, guid: 6c27120d6cfd66341aaadec86ffefd5d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1208448715
       objectReference: {fileID: 0}
     - target: {fileID: 1917389393939658895, guid: 6c27120d6cfd66341aaadec86ffefd5d, type: 3}
       propertyPath: m_RootOrder

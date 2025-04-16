@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class MainMenuTip : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private float timer = 0f;
+    private void Update()
     {
-        
-    }
+        timer += Time.deltaTime;
+        if(timer > 20f)
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }
