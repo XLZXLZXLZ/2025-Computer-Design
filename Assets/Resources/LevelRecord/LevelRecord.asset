@@ -14,38 +14,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelDatas:
   - LevelName: Level1-1
-    StarCount: 3
+    StarCount: 0
     Accessable: 1
   - LevelName: Level1-2
-    StarCount: 2
-    Accessable: 1
+    StarCount: 0
+    Accessable: 0
   - LevelName: Level1-3
     StarCount: 0
     Accessable: 0
   - LevelName: Level1-4
-    StarCount: 1
-    Accessable: 1
+    StarCount: 0
+    Accessable: 0
   - LevelName: Level2-1
-    StarCount: 1
-    Accessable: 1
+    StarCount: 0
+    Accessable: 0
   - LevelName: Level2-2
-    StarCount: 1
-    Accessable: 1
+    StarCount: 0
+    Accessable: 0
   - LevelName: Level2-3
-    StarCount: 1
-    Accessable: 1
+    StarCount: 0
+    Accessable: 0
   - LevelName: Level2-4
     StarCount: 0
     Accessable: 0
   - LevelName: Level3-1
-    StarCount: 1
-    Accessable: 1
+    StarCount: 0
+    Accessable: 0
   - LevelName: Level3-2
     StarCount: 0
     Accessable: 0
   - LevelName: Level3-3
-    StarCount: 1
-    Accessable: 1
+    StarCount: 0
+    Accessable: 0
   - LevelName: Level3-4
     StarCount: 0
     Accessable: 0

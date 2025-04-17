@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LevelRecord
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: ea75e5d1d3df1a9429f69cbcfe8206e8, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.size
+    value: 12
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[0].LevelName
+    value: Level1-1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[0].StarCount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[0].Accessable
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[1].LevelName
+    value: Level1-2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[1].StarCount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[1].Accessable
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[2].LevelName
+    value: Level1-3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[2].StarCount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[2].Accessable
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[3].LevelName
+    value: Level1-4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[3].StarCount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[3].Accessable
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[4].LevelName
+    value: Level2-1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[4].StarCount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[4].Accessable
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[5].LevelName
+    value: Level2-2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[5].StarCount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[5].Accessable
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[6].LevelName
+    value: Level2-3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[6].StarCount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[6].Accessable
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[7].LevelName
+    value: Level2-4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[7].StarCount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[7].Accessable
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[8].LevelName
+    value: Level3-1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[8].StarCount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[8].Accessable
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[9].LevelName
+    value: Level3-2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[9].StarCount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[9].Accessable
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[10].LevelName
+    value: Level3-3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[10].StarCount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[10].Accessable
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[11].LevelName
+    value: Level3-4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[11].StarCount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LevelDatas.Array.data[11].Accessable
+    value: 0
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []
