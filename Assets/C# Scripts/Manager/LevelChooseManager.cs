@@ -32,7 +32,16 @@ public class LevelChooseManager : Singleton<LevelChooseManager>
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.R))
+        {
+            ResetTimer += Time.deltaTime;
+            if (ResetTimer > 3)
+            {
+                LevelRecords.ResetData();
+                ResetTimer = 0;
+            }
+        }
+        else { ResetTimer = 0; }
     }
 
     private void FixedUpdate() {

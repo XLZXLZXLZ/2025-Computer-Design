@@ -22,6 +22,8 @@ public class StartMenu : MonoBehaviour
                 .Append(t.DOScale(transform.localScale,1f).SetEase(Ease.OutBack));
             t.localScale = Vector3.zero;
         }
+
+        playerTypeText.text = PlayerPrefs.GetInt("PlayerType", 0) == 2 ? "评委模式" : "标准模式";
     }
 
     public void StartGame()
@@ -36,7 +38,12 @@ public class StartMenu : MonoBehaviour
 
     public void ChangePlayerType()
     {
-        var t = PlayerPrefs.GetInt("PlayerType", 0);
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            return;
+        }
+
+            var t = PlayerPrefs.GetInt("PlayerType", 0);
         t = t % 2 + 1;
         PlayerPrefs.SetInt("PlayerType", t);
         playerTypeText.text = t == 1 ? "标准模式" : "评委模式";
